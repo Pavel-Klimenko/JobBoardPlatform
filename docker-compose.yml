@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  app_platform:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: jobplatform
+    container_name: jobplatform-app
+    restart: unless-stopped
+    working_dir: /var/www/job_platform/
+    volumes:
+      - ./:/var/www/job_platform
+    networks:
+      - jobplatform
+
+  db_platform:
+    image: mysql:5.7
+    container_name: jobplatform-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - jobplatform
+
+  nginx_platform:
+    image: nginx:alpine
+    container_name: jobplatform-nginx
+    restart: unless-stopped
+    ports:
+      - "8002:81"
+    volumes:
+      - ./:/var/www/job_platform
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - jobplatform
+
+networks:
+  jobplatform:
+    driver: bridge
