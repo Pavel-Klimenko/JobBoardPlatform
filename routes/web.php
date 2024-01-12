@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers;
+use App\Containers\HomePage\UI\WEB\Controllers\HomePageController;
 
-Route::get('/', [Controllers\TestController::class, 'test']);
+Route::get('/', [HomePageController::class, 'renderHomePage']);

@@ -1,0 +1,5 @@
+@media (max-width: 575px) {
+    .main-menu-contact {
+        display: none !important;
+    }
+}
