@@ -6,7 +6,7 @@
  * Time: 23:58
  */
 
-namespace App\Containers\HomePage\Actions;
+namespace App\Containers\HomePage\_Actions;
 
 use App\Constants;
 use App\Ship\Helpers\Helper;

@@ -6,7 +6,7 @@
  * Time: 23:58
  */
 
-namespace App\Containers\Vacancies\Actions;
+namespace App\Containers\Vacancies\_Actions;
 
 use App\Ship\Helpers\Helper;
 use App\Containers\Vacancies\Models\Vacancies;

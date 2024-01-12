@@ -2,7 +2,7 @@
     <div class="form_inner white-bg">
         <h3>Vacancy filter</h3>
 
-        @if($filterSetFlag)
+        @if($filterSetFlag ?? '')
             <a href="{{ route('browse-job') }}" class="btn btn-outline-danger">Reset filter</a>
             <br/><br/><br/>
         @endif
