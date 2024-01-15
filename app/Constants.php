@@ -20,6 +20,8 @@ class Constants
         'candidate' => 'candidate',
     ];
 
+    const SUCCESSFUL_RESPONSE_CODES = [200, 201];
+
 
 //    const INTERVIEW_INVITATIONS_STATUSES = [
 //        'ACCEPTED' => 'accepted',

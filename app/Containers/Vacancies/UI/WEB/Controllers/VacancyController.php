@@ -13,7 +13,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Containers\Vacancies\Models\Vacancies;
 use Illuminate\Support\Facades\Http;
 use Exception;
-
+use App\Constants;
 
 class VacancyController extends BaseController
 {
@@ -24,104 +24,74 @@ class VacancyController extends BaseController
 //    }
 
     public function getVacancyById($id) {
-        try {
-            $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/read/', ['id' => $id]);
-            $vacancy = json_decode($response->getBody(), true);
-            //dump($arResponse);
 
-            return view('detail_pages.vacancy', compact('vacancy'));
+        $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/read/', ['id' => $id]);
+        $vacancy = json_decode($response->getBody(), true);
+        //dump($arResponse);
+
+        return view('detail_pages.vacancy', compact('vacancy'));
 
 //            return view('detail_pages.vacancy',
 //                compact('vacancy', 'category', 'company', 'isCandidateFlag', 'isCompanyFlag'));
-        } catch (Exception $exception) {
-            return print_r($exception->getMessage());
-        }
     }
 
 
     public function getVacancies(Request $request)
     {
-        try {
-
-            //TODO фильтр в POSTMAN, сделать AJAX запросом!
-            $arParams = [
-                //'CATEGORY_NAME' => 'java',
-                //'CITY' => 'Boston'
-            ];
-
-            $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/list', $arParams);
-            $vacancies = json_decode($response->getBody(), true)['data'];
-            //dump($vacancies);
-
-            return view('lists.browse_job', compact('vacancies'));
 
 
-        } catch (Exception $exception) {
-            return print_r($exception->getMessage());
-        }
+        //TODO фильтр в POSTMAN, сделать AJAX запросом!
+        $arParams = [
+            //'CATEGORY_NAME' => 'java',
+            //'CITY' => 'Boston'
+        ];
+
+        $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/list', $arParams);
+        $vacancies = json_decode($response->getBody(), true)['data'];
+        //dump($vacancies);
+
+        return view('lists.browse_job', compact('vacancies'));
     }
 
 
 
-//    public function createVacancy(Request $request)
-//    {
-//        sleep(1);
-//
-//        $request->validate([
-//            'NAME' => 'required|max:255',
-//            'COUNTRY' => 'required|max:255',
-//            'CITY' => 'required|max:255',
-//            'CATEGORY_ID' => 'required|not_in:0',
-//            'SALARY_FROM' => 'required|max:255',
-//            'DESCRIPTION' => 'required|max:2500',
-//            'RESPONSIBILITY' => 'required|max:2500',
-//            'QUALIFICATIONS' => 'required|max:2500',
-//            'BENEFITS' => 'required|max:2500',
-//        ]);
-//
-//        $newVacancy = app(_Actions\getCandidates::class)->run($request);
-//
-//        //sending notification to admin
-//        $date = (object) [
-//            'entity' => 'vacancy',
-//            'message' =>  'Added new vacancy',
-//            'entity_id' => $newVacancy->ID,
-//        ];
-//
-//        event(new NewEntityCreated($date));
-//
-//        return redirect()->route('personal-vacancies');
-//    }
+    public function createVacancy(Request $request)
+    {
+        $arParams = [
+            'NAME' => 'Test444',
+            //'ICON' => Auth::user()->ICON,
+            //'IMAGE' => Auth::user()->IMAGE,
+            'COUNTRY' => 'Test444',
+            'CITY' => 'Test444',
+            'CATEGORY_ID' => 1,
+            //'COMPANY_ID' => Auth::user()->id, TODO передать с другого сервиса
+            'SALARY_FROM' => 1000,
+            'DESCRIPTION' => '345435435dgfdg',
+            //'RESPONSIBILITY' => Helper::convertTextPointsToJson($request->RESPONSIBILITY),
+            //'QUALIFICATIONS' => Helper::convertTextPointsToJson($request->QUALIFICATIONS),
+            'BENEFITS' => 'Test4545'
+        ];
+
+        $response = Http::post(env('APP_JOBSERVICE_URL').'/api/vacancies/create/', $arParams);
+        if (!in_array($response->status(),Constants::SUCCESSFUL_RESPONSE_CODES)) dd($response);
+    }
 
 
     public function deleteVacancy($id)
     {
-        try {
-            $response = Http::delete(env('APP_JOBSERVICE_URL').'/api/vacancies/delete/' . $id);
-            if ($response->status() != 200) dd($response);
-            return redirect('/vacancies/list');
-        } catch (Exception $exception) {
-            return print_r($exception->getMessage());
-        }
+        $response = Http::delete(env('APP_JOBSERVICE_URL').'/api/vacancies/delete/' . $id);
+        if ($response->status() != 200) dd($response);
+        return redirect('/vacancies/list');
     }
-//
-//    public function updateVacancy(Request $request)
-//    {
-//        sleep(1);
-//        app(_Actions\updateVacancy::class)->run($request);
-//
-//        $this->cacheService->deleteKeyFromCache('vacancy_'.$request->VACANCY_ID);
-//
-//        //sending notification to admin
-//        $date = (object) [
-//            'entity' => 'vacancy',
-//            'message' =>  'Updated new vacancy',
-//            'entity_id' => $request->VACANCY_ID,
-//        ];
-//
-//        event(new NewEntityCreated($date));
-//
-//        return back();
-//    }
 
+    public function updateVacancy($id, Request $request)
+    {
+        $arParams = [
+            'NAME1' => 'PHP Developer333888',
+            //'CITY' => 'Boston'
+        ];
+
+        $response = Http::post(env('APP_JOBSERVICE_URL').'/api/vacancies/update/' . $id, $arParams);
+        if (!in_array($response->status(),Constants::SUCCESSFUL_RESPONSE_CODES)) dd($response);
+    }
 }

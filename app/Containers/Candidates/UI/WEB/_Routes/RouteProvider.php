@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Candidates\UI\WEB\Routes;
+namespace App\Containers\Candidates\UI\WEB\_Routes;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
