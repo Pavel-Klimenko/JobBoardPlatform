@@ -17,7 +17,7 @@
             <div class="row">
                 @foreach ($vacancies as $vacancy)
                     @php
-                        $model = App\Containers\Vacancies\Models\JobCategories::class;
+                        $model = App\Containers\Vacancies\_Models\JobCategories::class;
                         $category = \App\Ship\Helpers\Helper::getTableRow($model, 'ID', $vacancy->CATEGORY_ID);
                     @endphp
                     <div class="col-lg-12 col-md-12">

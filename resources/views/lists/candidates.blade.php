@@ -31,7 +31,7 @@
                                 @foreach ($candidates as $candidate)
 
                                     @php
-                                    $model = \App\Containers\Vacancies\Models\JobCategories::class;
+                                    $model = \App\Containers\Vacancies\_Models\JobCategories::class;
                                     $catedory = \App\Ship\Helpers\Helper::getTableRow($model, 'ID', $candidate->CATEGORY_ID);
                                     @endphp
 

@@ -14,7 +14,7 @@
                 <div class="candidate_active owl-carousel">
                     @foreach ($candidates as $candidate)
                         @php
-                            $model = \App\Containers\Vacancies\Models\JobCategories::class;
+                            $model = \App\Containers\Vacancies\_Models\JobCategories::class;
                             $category = \App\Ship\Helpers\Helper::getTableRow($model, 'ID', $candidate->CATEGORY_ID);
                         @endphp
                         <div class="single_candidates text-center">

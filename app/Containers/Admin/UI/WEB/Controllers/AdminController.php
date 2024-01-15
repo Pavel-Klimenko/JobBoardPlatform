@@ -2,18 +2,18 @@
 
 namespace App\Containers\Admin\UI\WEB\Controllers;
 
-use App\Containers\Vacancies\Models\InterviewInvitations;
+use App\Containers\Vacancies\_Models\InterviewInvitations;
 use function Doctrine\Common\Cache\Psr6\get;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Roles;
 use App\Models\User;
-use App\Containers\Vacancies\Models\Vacancies;
+use App\Containers\Vacancies\_Models\Vacancies;
 use App\Models\Reviews;
 use App\Constants;
 use App\Ship\Helpers\Helper;
 use App\Services\Charts;
 use Illuminate\Http\Request;
-use App\Containers\Vacancies\Models\JobCategories;
+use App\Containers\Vacancies\_Models\JobCategories;
 use App\Contracts\CacheContract;
 
 class AdminController extends BaseController

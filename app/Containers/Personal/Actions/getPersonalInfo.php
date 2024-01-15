@@ -9,7 +9,7 @@
 namespace App\Containers\Personal\Actions;
 
 use App\Ship\Helpers\Helper;
-use App\Containers\Vacancies\Models\JobCategories;
+use App\Containers\Vacancies\_Models\JobCategories;
 
 class getPersonalInfo
 {

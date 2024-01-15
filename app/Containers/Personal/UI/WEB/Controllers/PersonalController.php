@@ -9,8 +9,8 @@ use App\Events\NewEntityCreated;
 use App\Events\VacancyInterviewRequest;
 use Illuminate\Http\Request;
 use App\Events\CandidateInvitation;
-use App\Containers\Vacancies\Models\Vacancies;
-use App\Containers\Vacancies\Models\InterviewInvitations;
+use App\Containers\Vacancies\_Models\Vacancies;
+use App\Containers\Vacancies\_Models\InterviewInvitations;
 use App\Ship\Helpers\Helper;
 
 

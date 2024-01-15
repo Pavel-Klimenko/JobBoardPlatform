@@ -8,8 +8,8 @@
 
 namespace App\Containers\HomePage\_Actions;
 
-use App\Containers\Vacancies\Models\JobCategories;
-use App\Containers\Vacancies\Models\Vacancies;
+use App\Containers\Vacancies\_Models\JobCategories;
+use App\Containers\Vacancies\_Models\Vacancies;
 //use App\Models\User;
 //use App\Models\Reviews;
 use Illuminate\Support\Facades\DB;

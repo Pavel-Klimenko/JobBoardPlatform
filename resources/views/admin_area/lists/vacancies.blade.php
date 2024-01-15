@@ -24,7 +24,7 @@
                             <tbody>
                             @foreach ($listElements as $vacancy)
                                 @php
-                                    $jobCategories = \App\Containers\Vacancies\Models\JobCategories::class;
+                                    $jobCategories = \App\Containers\Vacancies\_Models\JobCategories::class;
                                     $category = \App\Ship\Helpers\Helper::getTableRow($jobCategories, 'ID', $vacancy->CATEGORY_ID);
                                     $user = \App\Models\User::class;
                                     $company = \App\Ship\Helpers\Helper::getTableRow($user, 'id', $vacancy->COMPANY_ID);

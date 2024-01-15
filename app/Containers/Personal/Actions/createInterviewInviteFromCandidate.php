@@ -9,7 +9,7 @@
 namespace App\Containers\Personal\Actions;
 
 use App\Constants;
-use App\Containers\Vacancies\Models\InterviewInvitations;
+use App\Containers\Vacancies\_Models\InterviewInvitations;
 use App\Models\User;
 use App\Events\CandidateInvitation;
 

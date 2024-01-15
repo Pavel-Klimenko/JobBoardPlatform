@@ -10,7 +10,7 @@ use App\Ship\Helpers\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
-use App\Containers\Vacancies\Models\Vacancies;
+use App\Containers\Vacancies\_Models\Vacancies;
 use Illuminate\Support\Facades\Http;
 use Exception;
 use App\Constants;

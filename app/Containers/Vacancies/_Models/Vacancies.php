@@ -1,5 +1,5 @@
 <?php
-namespace App\Containers\Vacancies\Models;
+namespace App\Containers\Vacancies\_Models;
 
 use Illuminate\Database\Eloquent\Model;
 
