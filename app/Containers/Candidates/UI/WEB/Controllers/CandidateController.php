@@ -21,8 +21,8 @@ class CandidateController extends BaseController
     public function getCandidates()
     {
         $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/candidates/');
-        $candidates = json_decode($response->getBody(), true);
-        dump($candidates);
+        $response = json_decode($response->getBody(), true);
+        dump($response);
 
 
         //$itemsOnPage = 8;
@@ -33,9 +33,9 @@ class CandidateController extends BaseController
 
     public function getCandidate($id)
     {
-        $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/candidates/' . $id);
-        $candidate = json_decode($response->getBody(), true);
-        dump($candidate);
+        $response = Http::acceptJson()->get(env('APP_JOBSERVICE_URL').'/api/candidates/' . $id);
+        $response = json_decode($response->getBody(), true);
+        dump($response);
         //return view('detail_pages.vacancy', compact('vacancy'));
     }
 

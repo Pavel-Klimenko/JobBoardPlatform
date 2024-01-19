@@ -6,7 +6,7 @@
  * Time: 23:58
  */
 
-namespace App\Containers\Personal\Actions;
+namespace App\Containers\Personal\_Actions;
 
 use App\Contracts\CacheContract;
 use App\Ship\Helpers\Helper;

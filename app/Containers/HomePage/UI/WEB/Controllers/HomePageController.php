@@ -14,7 +14,7 @@ class HomePageController extends Controller
     public function renderHomePage()
     {
         try {
-            $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/homepage/');
+            $response = Http::acceptJson()->get(env('APP_JOBSERVICE_URL').'/api/homepage/');
             $arResponse = json_decode($response->getBody(), true);
             $cities = $arResponse['cities'];
             $jobCategories = $arResponse['job_categories'];
