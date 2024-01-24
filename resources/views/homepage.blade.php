@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-{{--    @include('home_blocks.job_filter')--}}
+    @include('home_blocks.job_filter')
     @include('home_blocks.job_categories')
 {{--    @include('home_blocks.job_listing')--}}
 {{--    @include('home_blocks.candidates')--}}

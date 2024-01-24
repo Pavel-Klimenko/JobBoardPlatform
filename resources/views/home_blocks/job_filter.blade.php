@@ -1,6 +1,4 @@
-<!-- catagory_area -->
 <div class="catagory_area">
-
     <div class="container">
         <div class="row align-items-center mb-40">
             <div class="col-lg-6 col-md-6">
@@ -9,7 +7,8 @@
                 </div>
             </div>
         </div>
-        <form action="{{ route('browse-job') }}">
+        <form>
+{{--        <form action="{{ //route('browse-job') }}">--}}
             @csrf
             <div class="row cat_search">
                 <div class="col-lg-4 col-md-4">
@@ -17,7 +16,7 @@
                         <select name="CITY" class="wide">
                             <option selected disabled>City</option>
                             @foreach ($cities as $city)
-                                <option value="{{ $city->CITY }}">{{ $city->CITY }}</option>
+                                <option value="{{ $city['CITY'] }}">{{ $city['CITY'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -27,7 +26,9 @@
                         <select name="CATEGORY_ID" class="wide">
                             <option selected disabled>Base technology</option>
                             @foreach ($jobCategories as $category)
-                                <option value="{{ $category->ID }}">{{ $category->NAME }}</option>
+                                @if($category['QUANTITY_OF_VACANCIES'] > 0)
+                                    <option value="{{ $category['ID'] }}">{{ $category['NAME'] }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -41,4 +42,3 @@
         </form>
     </div>
 </div>
-<!--/ catagory_area -->
