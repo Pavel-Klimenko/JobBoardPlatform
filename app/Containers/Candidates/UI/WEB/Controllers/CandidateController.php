@@ -34,9 +34,8 @@ class CandidateController extends BaseController
     public function getCandidate($id)
     {
         $response = Http::acceptJson()->get(env('APP_JOBSERVICE_URL').'/api/candidates/' . $id);
-        $response = json_decode($response->getBody(), true);
-        dump($response);
-        //return view('detail_pages.vacancy', compact('vacancy'));
+        $candidate = json_decode($response->getBody(), true);
+        return view('detail_pages.candidate', compact('candidate'));
     }
 
     public function createInterviewInvitation(Request $request) {

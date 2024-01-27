@@ -25,20 +25,10 @@ class HomePageController extends Controller
         $companies = $arResponse['companies'];
         $reviews = $arResponse['reviews'];
 
-        dump($cities);
-
         return view('homepage',
             compact('cities', 'jobCategories', 'vacancyCategories',
                 'vacancies', 'candidates' , 'companies', 'reviews'
             ));
 
     }
-
-//    public function createUserReview(Request $request)
-//    {
-//        $date = app(Actions\createUserReview::class)->run($request);
-//        event(new NewEntityCreated($date));
-//        return redirect()->route('homepage');
-//    }
-
 }

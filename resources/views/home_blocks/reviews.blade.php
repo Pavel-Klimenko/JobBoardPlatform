@@ -1,5 +1,4 @@
-<!-- testimonial_area  -->
-<div class="testimonial_area  ">
+<div class="testimonial_area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -15,15 +14,15 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="{{ $review->PHOTO }}" height="228" width="228" alt="">
+                                            <img src="{{ $review['PHOTO'] }}" height="228" width="228" alt="">
                                             <div class="quote_icon">
                                                 <i class="Flaticon flaticon-quote"></i>
                                             </div>
                                         </div>
                                         <div class="info">
-                                            <p>{{ $review->REVIEW }}</p>
+                                            <p>{{ $review['REVIEW'] }}</p>
                                             <span>
-                                                <h4><b> - {{ $review->NAME }}</b></h4>
+                                                <h4><b> - {{ $review['NAME'] }}</b></h4>
                                             </span>
                                         </div>
                                     </div>
@@ -37,4 +36,3 @@
         </div>
     </div>
 </div>
-<!-- /testimonial_area  -->

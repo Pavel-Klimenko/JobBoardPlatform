@@ -16,13 +16,13 @@ Route::get('/', [HomePageController::class, 'renderHomePage']);
 //    Route::get('/delete/{id}',[VacancyController::class, 'deleteVacancy']);
 //    Route::get('/update/{id}',[VacancyController::class, 'updateVacancy']);
 //});
-//
-//Route::group(['prefix' => 'candidates'], function () {
+
+Route::group(['prefix' => 'candidates'], function () {
 //    Route::get('/create-interview-invitation',[CandidateController::class, 'createInterviewInvitation']);
 //    Route::get('/',[CandidateController::class, 'getCandidates']);
-//    Route::get('/{id}',[CandidateController::class, 'getCandidate']);
-//});
-//
+    Route::get('/{id}',[CandidateController::class, 'getCandidate']);
+});
+
 //Route::group(['prefix' => 'personal'], function () {
 //    //Route::get('/create-interview-invitation',[CandidateController::class, 'createInterviewInvitation']);
 //    //Route::get('/',[CandidateController::class, 'getCandidates']);

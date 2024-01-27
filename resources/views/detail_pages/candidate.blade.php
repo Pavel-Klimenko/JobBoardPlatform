@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{$candidate->NAME}}
+    {{$candidate['NAME']}}
 @endsection
 
 @section('content')
@@ -10,9 +10,9 @@
             <div class="row">
 
                 <div class="col-lg-8">
-                    @if($candidate->IMAGE)
+                    @if($candidate['IMAGE'])
                         <div class="blog_item_img">
-                            <img class="card-img rounded-0" width="750" src="{{$candidate->IMAGE}}" alt="">
+                            <img class="card-img rounded-0" width="750" src="{{$candidate['IMAGE']}}" alt="">
                         </div>
                         <br/><br/>
                     @endif
@@ -20,17 +20,17 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="{{$candidate->ICON}}" alt="">
+                                    <img src="{{$candidate['ICON']}}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="javascript:void(0);"><h4>
-                                            {{$candidate->NAME}}
+                                            {{$candidate['NAME']}}
                                         </h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p><i class="fa fa-map-marker"></i>
-                                                {{$candidate->COUNTRY}},
-                                                {{$candidate->CITY}}
+                                                {{$candidate['COUNTRY']}},
+                                                {{$candidate['CITY']}}
                                             </p>
                                         </div>
                                     </div>
@@ -45,42 +45,42 @@
                         <div class="single_wrap">
                             <h4>Level:</h4>
                             <p>
-                                {{$candidate->LEVEL}}
-                                {{ucfirst($category->NAME)}}
+                                {{$candidate['LEVEL']}}
+                                {{ucfirst($candidate['CATEGORY_NAME'])}}
                                 developer
                             </p>
                         </div>
 
                         <div class="single_wrap">
                             <h4>Experience:</h4>
-                            <p>{{$candidate->EXPERIENCE}}</p>
+                            <p>{{$candidate['EXPERIENCE']}}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Education:</h4>
-                            <p>{{$candidate->EDUCATION}}</p>
+                            <p>{{$candidate['EDUCATION']}}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Skills:</h4>
-                            @foreach (json_decode($candidate->SKILLS) as $skill)
+                            @foreach (json_decode($candidate['SKILLS']) as $skill)
                                 <b>{{ $skill }}&nbsp;&nbsp;&nbsp;</b>
                             @endforeach
                         </div>
                         <div class="single_wrap">
                             <h4>Languages:</h4>
                             <ul>
-                                @foreach (json_decode($candidate->LANGUAGES) as $lang)
+                                @foreach (json_decode($candidate['LANGUAGES']) as $lang)
                                     <li>{{ $lang }}</li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="single_wrap">
                             <h4>About me:</h4>
-                            <p>{{$candidate->ABOUT_ME}}</p>
+                            <p>{{$candidate['ABOUT_ME']}}</p>
                         </div>
                     </div>
-                    @if ($isCompanyFlag ?? '')
+    {{--                @if ($isCompanyFlag ?? '')
                         @include('forms.inviteCandidate')
-                    @endif
+                    @endif--}}
                 </div>
 
                 <div class="col-lg-4">
@@ -90,19 +90,19 @@
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>Updated at: <span>{{$candidate->updated_at->format('d.m.Y')}}</span></li>
-                                <li>Desired salary: <span><b>{{$candidate->SALARY}}$</b></span></li>
-                                <li>Base technology: <span><b>{{ucfirst($category->NAME)}}</b></span></li>
-                                <li><span><b>{{$candidate->YEARS_EXPERIENCE}} years experience</b></span></li>
+                                <li>Updated at: <span>{{$candidate['updated_at']}}</span></li>
+                                <li>Desired salary: <span><b>{{$candidate['SALARY']}}$</b></span></li>
+                                <li>Base technology: <span><b>{{ucfirst($candidate['CATEGORY_NAME'])}}</b></span></li>
+                                <li><span><b>{{$candidate['YEARS_EXPERIENCE']}} years experience</b></span></li>
                                 <br/>
                                 <li>Phone:
                                     <span>
-                                            <a href="tel:{{$candidate->PHONE}}"><b>{{$candidate->PHONE}}</b></a>
+                                            <a href="tel:{{$candidate['PHONE']}}"><b>{{$candidate['PHONE']}}</b></a>
                                     </span>
                                 </li>
                                 <li>Email:
                                     <span>
-                                            <a href="mailto:{{$candidate->EMAIL}}"><b>{{$candidate->EMAIL}}</b></a>
+                                            <a href="mailto:{{$candidate['EMAIL']}}"><b>{{$candidate['EMAIL']}}</b></a>
                                     </span>
                                 </li>
 
