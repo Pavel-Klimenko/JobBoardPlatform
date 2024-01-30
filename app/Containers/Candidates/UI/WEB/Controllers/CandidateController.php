@@ -21,13 +21,10 @@ class CandidateController extends BaseController
     public function getCandidates()
     {
         $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/candidates/');
-        $response = json_decode($response->getBody(), true);
-        dump($response);
-
-
+        $candidates = json_decode($response->getBody(), true);
         //$itemsOnPage = 8;
         //$candidates = $candidates->paginate($itemsOnPage)->withQueryString();
-        //return view('lists.candidates', compact('candidates'));
+        return view('lists.candidates', compact('candidates'));
     }
 
 

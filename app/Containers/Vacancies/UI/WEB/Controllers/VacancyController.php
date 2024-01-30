@@ -23,20 +23,17 @@ class VacancyController extends BaseController
 //        $this->cacheService = $cacheService;
 //    }
 
-    public function getVacancyById($id) {
+    public function get($id) {
 
-        $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/read/', ['id' => $id]);
+        $response = Http::acceptJson()->get(env('APP_JOBSERVICE_URL').'/api/vacancies/' . $id);
         $vacancy = json_decode($response->getBody(), true);
-        //dump($arResponse);
-
         return view('detail_pages.vacancy', compact('vacancy'));
-
 //            return view('detail_pages.vacancy',
 //                compact('vacancy', 'category', 'company', 'isCandidateFlag', 'isCompanyFlag'));
     }
 
 
-    public function getVacancies(Request $request)
+    public function getList(Request $request)
     {
 
 

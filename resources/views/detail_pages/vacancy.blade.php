@@ -8,7 +8,6 @@
     <div class="job_details_area">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-8">
                     @if($vacancy['IMAGE'])
                         <div class="blog_item_img">
@@ -17,10 +16,13 @@
                         <br/><br/>
                     @endif
 
-{{--                    <div class="blog_item_img">--}}
-{{--                        <h3>About company:</h3>--}}
-{{--                        {{$company['DESCRIPTION']}}--}}
-{{--                    </div><br/><br/>--}}
+                    @if($vacancy['COMPANY']['DESCRIPTION'])
+                        <div class="blog_item_img">
+                            <h3>About company:</h3>
+                            {{$vacancy['COMPANY']['DESCRIPTION']}}
+                        </div><br/><br/>
+                    @endif
+
 
                     <div class="job_details_header">
                         <div class="single_jobs white-bg d-flex justify-content-between">
@@ -40,7 +42,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -75,7 +76,6 @@
 {{--                    @if ($isCandidateFlag ?? '')--}}
 {{--                        @include('forms.jobApply')--}}
 {{--                    @endif--}}
-
                 </div>
 
                 <div class="col-lg-4">
@@ -86,37 +86,27 @@
                         <div class="job_content">
                             <ul>
                                 <li>Updated at: <span>{{$vacancy['updated_at']}}</span></li>
-
                                 <li>Salary from: <span><b>{{$vacancy['SALARY_FROM']}}$</b></span></li>
-{{--                                <li>Base technology: <span><b>{{ucfirst($category['NAME'])}}</b></span></li>--}}
                                 <br/>
 
-{{--                                <li>Company: <span><b>{{$company->NAME}}</b></span></li>--}}
-{{--                                <li>Number of employees: <span><b>{{$company->EMPLOYEE_CNT}}</b></span></li>--}}
-{{--                                <li>Company Website:--}}
-{{--                                    <span>--}}
-{{--                                            <a href="{{$company->WEB_SITE}}"><b>{{$company->WEB_SITE}}</b></a>--}}
-{{--                                    </span>--}}
-{{--                                </li>--}}
+                                <li>Company: <span><b>{{$vacancy['COMPANY']['NAME']}}</b></span></li>
+                                <li>Number of employees: <span><b>{{$vacancy['COMPANY']['EMPLOYEE_CNT']}}</b></span></li>
+                                <li>Company Website:
+                                    <span><a href="{{$vacancy['COMPANY']['WEB_SITE']}}"><b>{{$vacancy['COMPANY']['WEB_SITE']}}</b></a></span>
+                                </li>
 
                                 <br/>
 
-{{--                                <li>Phone:--}}
-{{--                                    <span>--}}
-{{--                                            <a href="tel:{{$company->PHONE}}"><b>{{$company->PHONE}}</b></a>--}}
-{{--                                    </span>--}}
-{{--                                </li>--}}
-{{--                                <li>Email:--}}
-{{--                                    <span>--}}
-{{--                                            <a href="mailto:{{$company->EMAIL}}"><b>{{$company->EMAIL}}</b></a>--}}
-{{--                                    </span>--}}
-{{--                                </li>--}}
-
+                                <li>Phone:
+                                    <span><a href="tel:{{$vacancy['COMPANY']['PHONE']}}"><b>{{$vacancy['COMPANY']['PHONE']}}</b></a></span>
+                                </li>
+                                <li>Email:
+                                    <span><a href="mailto:{{$vacancy['COMPANY']['EMAIL']}}"><b>{{$vacancy['COMPANY']['EMAIL']}}</b></a></span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

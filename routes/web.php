@@ -8,18 +8,19 @@ use App\Containers\Personal\UI\WEB\Controllers\PersonalController;
 
 Route::get('/', [HomePageController::class, 'renderHomePage']);
 
+//TODO общий контроллер в middleware!
 
-//Route::group(['prefix' => 'vacancies'], function () {
-//    Route::get('/create',[VacancyController::class, 'createVacancy']);
-//    Route::get('/',[VacancyController::class, 'getVacancies']);
-//    Route::get('/{id}',[VacancyController::class, 'getVacancyById']);
+Route::group(['prefix' => 'vacancies'], function () {
+    //Route::get('/create',[VacancyController::class, 'createVacancy']);
+    //Route::get('/',[VacancyController::class, 'getList']);
+    Route::get('/{id}',[VacancyController::class, 'get']);
 //    Route::get('/delete/{id}',[VacancyController::class, 'deleteVacancy']);
 //    Route::get('/update/{id}',[VacancyController::class, 'updateVacancy']);
-//});
+});
 
 Route::group(['prefix' => 'candidates'], function () {
 //    Route::get('/create-interview-invitation',[CandidateController::class, 'createInterviewInvitation']);
-//    Route::get('/',[CandidateController::class, 'getCandidates']);
+    Route::get('/',[CandidateController::class, 'getCandidates']);
     Route::get('/{id}',[CandidateController::class, 'getCandidate']);
 });
 
