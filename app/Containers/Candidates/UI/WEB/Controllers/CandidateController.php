@@ -18,7 +18,7 @@ class CandidateController extends BaseController
 //    }
 
 
-    public function getCandidates()
+    public function getList()
     {
         $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/candidates/');
         $candidates = json_decode($response->getBody(), true);
@@ -28,7 +28,7 @@ class CandidateController extends BaseController
     }
 
 
-    public function getCandidate($id)
+    public function get($id)
     {
         $response = Http::acceptJson()->get(env('APP_JOBSERVICE_URL').'/api/candidates/' . $id);
         $candidate = json_decode($response->getBody(), true);
@@ -42,6 +42,8 @@ class CandidateController extends BaseController
             'VACANCY_ID' => 2,
             'COVERING_LETTER' => 'TEST666666666666666',
         ];
+
+        dd($arParams);
 
         $response = Http::post(env('APP_JOBSERVICE_URL').'/api/candidates/create-interview-invitation', $arParams);
         if (!in_array($response->status(),Constants::SUCCESSFUL_RESPONSE_CODES)) dd($response);

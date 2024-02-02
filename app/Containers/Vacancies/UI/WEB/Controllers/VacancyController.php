@@ -35,8 +35,6 @@ class VacancyController extends BaseController
 
     public function getList(Request $request)
     {
-
-
         //TODO фильтр в POSTMAN, сделать AJAX запросом!
         $arParams = [
             //'CATEGORY_NAME' => 'java',
@@ -45,7 +43,6 @@ class VacancyController extends BaseController
 
         $response = Http::acceptJson()->post(env('APP_JOBSERVICE_URL').'/api/vacancies/list', $arParams);
         $vacancies = json_decode($response->getBody(), true)['data'];
-        //dump($vacancies);
 
         return view('lists.browse_job', compact('vacancies'));
     }
