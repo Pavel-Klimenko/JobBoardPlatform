@@ -51,22 +51,7 @@ class VacancyController extends BaseController
 
     public function createVacancy(Request $request)
     {
-        $arParams = [
-            'NAME' => 'Test444',
-            //'ICON' => Auth::user()->ICON,
-            //'IMAGE' => Auth::user()->IMAGE,
-            'COUNTRY' => 'Test444',
-            'CITY' => 'Test444',
-            'CATEGORY_ID' => 1,
-            //'COMPANY_ID' => Auth::user()->id, TODO передать с другого сервиса
-            'SALARY_FROM' => 1000,
-            'DESCRIPTION' => '345435435dgfdg',
-            //'RESPONSIBILITY' => Helper::convertTextPointsToJson($request->RESPONSIBILITY),
-            //'QUALIFICATIONS' => Helper::convertTextPointsToJson($request->QUALIFICATIONS),
-            'BENEFITS' => 'Test4545'
-        ];
-
-        $response = Http::post(env('APP_JOBSERVICE_URL').'/api/vacancies/create/', $arParams);
+        $response = Http::post(env('APP_JOBSERVICE_URL').'/api/vacancies/create/');
         if (!in_array($response->status(),Constants::SUCCESSFUL_RESPONSE_CODES)) dd($response);
     }
 
@@ -75,15 +60,15 @@ class VacancyController extends BaseController
     {
         $response = Http::delete(env('APP_JOBSERVICE_URL').'/api/vacancies/delete/' . $id);
         if ($response->status() != 200) dd($response);
-        return redirect('/vacancies/list');
+        //return redirect('/vacancies/list');
     }
 
     public function updateVacancy($id, Request $request)
     {
-        $arParams = [
-            'NAME1' => 'PHP Developer333888',
-            //'CITY' => 'Boston'
-        ];
+//        $arParams = [
+//            'NAME1' => 'PHP Developer333888',
+//            //'CITY' => 'Boston'
+//        ];
 
         $response = Http::post(env('APP_JOBSERVICE_URL').'/api/vacancies/update/' . $id, $arParams);
         if (!in_array($response->status(),Constants::SUCCESSFUL_RESPONSE_CODES)) dd($response);

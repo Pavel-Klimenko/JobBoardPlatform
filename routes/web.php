@@ -8,15 +8,17 @@ use App\Containers\Personal\UI\WEB\Controllers\PersonalController;
 
 Route::get('/', [HomePageController::class, 'renderHomePage']);
 
+
+//TODO СДЕЛАТЬ ФРОНТ НА vue JS!!!
+
 //TODO общий контроллер в middleware!
 
 Route::group(['prefix' => 'vacancies'], function () {
     Route::get('/',[VacancyController::class, 'getList']);
     Route::get('/{id}',[VacancyController::class, 'get']);
     Route::post('/create',[VacancyController::class, 'createVacancy']);
-
-//    Route::get('/delete/{id}',[VacancyController::class, 'deleteVacancy']);
-//    Route::get('/update/{id}',[VacancyController::class, 'updateVacancy']);
+    Route::delete('/delete/{id}',[VacancyController::class, 'deleteVacancy']);
+    Route::post('/update/{id}',[VacancyController::class, 'updateVacancy']);
 });
 
 Route::group(['prefix' => 'candidates'], function () {
